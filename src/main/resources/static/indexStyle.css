@@ -1,6 +1,7 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
+
 body {
     background-color: #141414;
     margin: 0;
@@ -193,11 +194,10 @@ header {
     color: white;
     font-size: 45px;
     margin: 0;
-    
 }
 .entity-container:hover{
     transform: scale(1.05);
-    background-color: #5E48FE;
+    background-color: rgba(73, 73, 73, 0.25);
 }
 
 .bi bi-people-fill{
