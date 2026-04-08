@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="../static/entityStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a th:href="@{/index}">
+                <div class="logo-container">
+                    <i class="bi bi-shop" style="font-size: 100px;"></i>
+                    <div class="name-container">
+                        <h1>SISTEMA DE GESTIÓN</h1>
+                        <h1>DE VENTAS</h1>
+                    </div>
+                </div>
+            </a>
+
+            <div class="navegation-container">
+                <a th:href="@{/detalles}" class="nav-btn">Detalles Venta</a>
+                <a th:href="@{/productos}" class="nav-btn">Productos</a>
+                <a th:href="@{/clientes}" class="nav-btn">Clientes</a>
+                <a th:href="@{/ventas}" class="nav-btn">Ventas</a>
+            </div>
+            <div class="header-icons">
+                <p>Nombre usuario</p>
+                <button>
+                    <i class="bi bi-person-circle" style="font-size: 40px"></i>
+                </button>
+                <button id="logout-btn">
+                    Cerrar Sesion <i class="bi bi-box-arrow-right" style="font-size: 1.2em;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="entity-title"">USUARIOS:</h1>
+        <hr>
+        <p class="entity-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia cupiditate in accusamus cum autem consequuntur, ea animi odit! Ab illum est reprehenderit expedita sequi voluptatibus.
+        </p>
+        <div class="crud-actions">
+            <button class="btn-crud" id="btn-crear">Crear <i class="bi bi-plus-circle-fill"></i></button>
+            <button class="btn-crud" id="btn-actualizar">Editar <i class="bi bi-pencil-fill"></i></button>
+            <button class="btn-crud" id="btn-eliminar">Eliminar <i class="bi bi-trash-fill"></i></button>
+            <button class="btn-crud" id="btn-listar">Actualizar Tabla <i class="bi bi-arrow-repeat"></i></button>
+        </div>
+
+        <div class="crud-search">
+            <input type="text" placeholder="Buscar por ID">
+            <button class="btn-crud" id="btn-buscar">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>codigo_usuario</th>
+                        <th>username</th>
+                        <th>password</th>
+                        <th>email</th>
+                        <th>rol</th>
+                        <th>estado</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <tr>
+                        <td>1</td>
+                        <td>gcalderon</td>
+                        <td>12345</td>
+                        <td>gcalderon@gmail.com</td>
+                        <td>admin</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    </div>
+</body>
+</html>
