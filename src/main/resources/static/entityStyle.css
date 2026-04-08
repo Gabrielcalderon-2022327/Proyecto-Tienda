@@ -45,6 +45,7 @@ header {
 }
 
 .name-container h1{
+    font-size: 1.4em;
     transition: 0.4s ease-in-out;
     margin: 0;
 }

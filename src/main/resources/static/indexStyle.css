@@ -45,6 +45,7 @@ header {
 }
 
 .name-container h1{
+    font-size: 1.4em;
     transition: 0.4s ease-in-out;
     margin: 0;
 }
@@ -150,19 +151,19 @@ header {
 
 .info-container h1{
     font-weight: 800;
-    font-size: 125px;
+    font-size: 100px;
 }
 
 .info-container h2{
     font-weight: 700;
-    font-size: 100px;
+    font-size: 80px;
     font-style: italic;
     padding-left: 40px;
 }
 
 .info-container p{
     font-weight: 400;
-    font-size: 35px;
+    font-size: 25px;
 }
 
 .info-container h1, .info-container h2, .info-container p{
@@ -192,12 +193,12 @@ header {
 
 .entity-container i{
     color: white;
-    font-size: 125px;
+    font-size: 100px;
     margin: 0;
 }
 .entity-container h2{
     color: white;
-    font-size: 45px;
+    font-size: 40px;
     margin: 0;
 }
 .entity-container:hover{
