@@ -11,6 +11,6 @@ public class UsuariosView {
         if(session.getAttribute("usuarioLogueado") == null){
             return "redirect:/login";
         }
-        return "Usurios";
+        return "Usuarios";
     }
 }

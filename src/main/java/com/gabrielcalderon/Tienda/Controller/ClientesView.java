@@ -11,6 +11,6 @@ public class ClientesView {
         if(session.getAttribute("usuarioLogueado") == null){
             return "redirect:/login";
         }
-        return "clientes";
+        return "Clientes";
     }
 }
