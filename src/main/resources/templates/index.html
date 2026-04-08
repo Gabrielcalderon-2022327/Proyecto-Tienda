@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="../static/indexStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <i class="bi bi-emoji-smile-fill" style="font-size: 100px;"></i>
+            </div>
+            <div class="navegation-container">
+                <button class="nav-btn">Clientes</button>
+                <button class="nav-btn">Detalles Venta</button>
+                <button class="nav-btn">Productos</button>
+                <button class="nav-btn">Usuarios</button>
+                <button class="nav-btn">Ventas</button>
+            </div>
+            <div class="header-icons">
+                <p>Nombre usuario</p>
+                <button>
+                    <i class="bi bi-person-circle" style="font-size: 40px"></i>
+                </button>
+                <button id="logout-btn">
+                    Cerrar Sesion <i class="bi bi-box-arrow-right" style="font-size: 1.2em;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="info-container">
+            <h1>BIENVENIDO AL SISTEMA:</h1>
+            <h2><i></i>Nombre Usuario</h2>
+            <p>
+                Este sistema esta diseñado para que pueda gestionar todas las operaciones relacionadas con la venta de cualquier cosa que se le pueda ocurrir.
+                Podra ver crear, editar y eliminar registros según sea su necesidad :)
+            </p>
+        </div>
+        <div class="entities-container">
+            <div class="entity-container">
+                <i class="bi bi-people-fill"></i>
+                <h2 >Clientes</h2>
+            </div>
+            <div class="entity-container">
+                <i class="bi bi-receipt"></i>
+                <h2>Detalles Venta</h2>
+            </div>
+            <div class="entity-container">
+                <i class="bi bi-archive-fill"></i>
+                <h2>Productos</h2>
+            </div>
+            <div class="entity-container">
+                <i class="bi bi-person-vcard-fill"></i>
+                <h2>Usuarios</h2>
+            </div>
+            <div class="entity-container">
+                <i class="bi bi-cart-fill"></i>
+                <h2>Ventas</h2>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
