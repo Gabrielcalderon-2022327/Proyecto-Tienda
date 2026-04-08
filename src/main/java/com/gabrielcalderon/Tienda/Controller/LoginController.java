@@ -27,6 +27,7 @@ public class LoginController {
         if (usuario.equals(userCorrecto) && password.equals(passCorrecto)){
             //Guardar sesion
             sesion.setAttribute("usuarioLogueado", usuario);
+            sesion.setAttribute("username", usuario);
             return "redirect:/index";
         } else {
             model.addAttribute("error:", "Usuario y contraseña incorrectas");
