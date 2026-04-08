@@ -33,7 +33,7 @@
                 <a th:href="@{/ventas}" class="nav-btn">Ventas</a>
             </div>
             <div class="header-icons">
-                <p>Nombre usuario</p>
+                <p th:text="${username}">Nombre usuario</p>
                 <button>
                     <i class="bi bi-person-circle" style="font-size: 40px"></i>
                 </button>
@@ -49,7 +49,7 @@
     <main>
         <div class="info-container">
             <h1>BIENVENIDO AL SISTEMA:</h1>
-            <h2><i></i>Nombre Usuario</h2>
+            <h2 th:text="${username}"><i>Nombre Usuario</i></h2>
             <p>
                 Este sistema esta diseñado para que pueda gestionar todas las operaciones relacionadas con la venta de
                 cualquier cosa que se le pueda ocurrir.
