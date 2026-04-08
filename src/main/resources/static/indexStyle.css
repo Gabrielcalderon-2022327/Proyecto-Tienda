@@ -16,10 +16,6 @@ header {
     width: 100%;
 }
 
-header.scrolled {
-    background-color: #282828;
-}
-
 .header-container {
     background: transparent;
     margin: 0;
@@ -35,10 +31,25 @@ header.scrolled {
 .logo-container {
     transition: 0.4s ease-in-out;
     cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.name-container h1{
+    transition: 0.4s ease-in-out;
+    margin: 0;
 }
 
 .logo-container:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
+}
+
+
+.logo-container:hover h1{
+    color: #5E48FE;
 }
 
 .header-icons {
@@ -118,7 +129,7 @@ header.scrolled {
     height: 2px;
     background: #5E48FE;
     display: block;
-    transition: 0.5s;
+    transition: 0.5s ease-in-out;
 }
 
 .nav-btn:hover::after,
@@ -169,7 +180,7 @@ header.scrolled {
     text-align: center;
     padding: 15px;
     border-radius: 10px;
-    transition: 0.3s ease-in-out;
+    transition: 0.4s ease-in-out;
     cursor: pointer;
 }
 
