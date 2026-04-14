@@ -10,10 +10,10 @@ public class IndexController {
     @GetMapping("/index")
     public String mostrarIndex(HttpSession session, Model model){
         //Validar Sesion
-        if(session.getAttribute("usuarioLogueado") == null){
+        if(session.getAttribute("currentUser") == null){
             return "redirect:/login";
         }
-        model.addAttribute("username", session.getAttribute("username"));
+        model.addAttribute("username", session.getAttribute("currentUser"));
         return "index";
     }
 
