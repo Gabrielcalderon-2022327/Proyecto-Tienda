@@ -60,7 +60,6 @@ input:focus {
     box-shadow: 0 0 8px rgba(255, 214, 10, 0.4);
 }
 
-/* BOTON */
 button {
     width: 85%;
     height: 48px;
@@ -79,7 +78,6 @@ button {
     margin: 10px 0px;
 }
 
-/* HOVER BOTON */
 button:hover {
     transform: translateY(-3px);
     background: transparent;
@@ -87,23 +85,21 @@ button:hover {
     border: 1px solid #FFD60A;
 }
 
-/* CLICK BOTON */
 button:active {
     transform: scale(0.96);
 }
 
-/* TEXTO */
 p {
     color: #aaa;
     font-size: 0.95rem;
     text-align: center;
 }
 
-/* LINK */
 a {
     text-decoration: none;
     color: #FFD60A;
     font-weight: 600;
+    cursor: pointer;
 }
 
 a:hover {
