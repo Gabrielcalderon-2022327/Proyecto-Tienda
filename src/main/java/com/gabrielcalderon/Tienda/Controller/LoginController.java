@@ -1,6 +1,9 @@
 package com.gabrielcalderon.Tienda.Controller;
 
+import com.gabrielcalderon.Tienda.Entity.Usuarios;
+import com.gabrielcalderon.Tienda.Service.UsuariosService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
+    @Autowired
+    private UsuariosService service;
+
     @GetMapping("/")
     public String inicio(){
         return "redirect:/login";
@@ -21,18 +27,42 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestParam String usuario, @RequestParam String password, HttpSession sesion, Model model){
-        String userCorrecto = "admin";
-        String passCorrecto = "1234";
+        Usuarios user = service.login(usuario, password);
 
-        if (usuario.equals(userCorrecto) && password.equals(passCorrecto)){
-            //Guardar sesion
-            sesion.setAttribute("usuarioLogueado", usuario);
-            sesion.setAttribute("username", usuario);
+        if (user != null) {
+            sesion.setAttribute("currentUser", usuario);
             return "redirect:/index";
         } else {
-            model.addAttribute("error:", "Usuario y contraseña incorrectas");
+            model.addAttribute("error", "Credenciales incorrectas");
+            System.out.println("hola");
             return "Login";
         }
+    }
+
+    @GetMapping("/register")
+    public String mostrarRegister(){
+        return "Register";
+    }
+
+    @PostMapping("/register")
+    public String registrarse(@RequestParam String mail, @RequestParam String username, @RequestParam String password, @RequestParam String confirmPassword, Model model){
+        if(!password.equals(confirmPassword)){
+            model.addAttribute("error", "La contraseña no coincide");
+            return "Register";
+        }
+        Usuarios newUser = new Usuarios();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        newUser.setEmail(mail);
+        newUser.setRol("user");
+        newUser.setEstado(1);
+
+        Usuarios user = service.addUsuario(newUser);
+        if (user==null){
+            model.addAttribute("error", "El nombre de usuario o el email ya existen");
+            return "Register";
+        }
+        return "redirect:/login";
     }
 
     @PostMapping("/logout")
