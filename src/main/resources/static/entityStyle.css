@@ -1,14 +1,14 @@
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
 
-a{
+a {
     color: inherit;
     text-decoration: none;
 }
 
 body {
-    background-color: #141414;
+    background: #000814;
     margin: 0;
     min-height: 100vh;
 }
@@ -42,21 +42,17 @@ header {
     align-items: center;
     gap: 10px;
     margin: 10px;
+    padding: 1px;
+    border-radius: 20px;
 }
 
-.name-container h1{
+.name-container h1 {
     font-size: 1.4em;
-    transition: 0.4s ease-in-out;
     margin: 0;
 }
 
 .logo-container:hover {
     transform: scale(1.025);
-}
-
-
-.logo-container:hover h1{
-    color: #5E48FE;
 }
 
 .header-icons {
@@ -97,7 +93,7 @@ header {
     text-align: center;
     align-items: center;
     gap: 10px;
-    border : 1px solid red;
+    border: 1px solid red;
     border-radius: 5px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
     background: none;
@@ -109,7 +105,7 @@ header {
     background-color: red;
 }
 
-.navegation-container{
+.navegation-container {
     align-items: center;
     display: flex;
     gap: 15px;
@@ -134,7 +130,7 @@ header {
     content: '';
     width: 0%;
     height: 2px;
-    background: #5E48FE;
+    background: #FFD60A;
     display: block;
     transition: 0.5s ease-in-out;
 }
@@ -143,6 +139,7 @@ header {
 .nav-btn:hover::before {
     width: 100%;
 }
+
 .main-content {
     padding: 40px 80px;
     color: white;
@@ -162,7 +159,7 @@ hr{
 }
 
 .entity-title:hover {
-    color: #5E48FE;
+    color: #FFD60A;
 }
 
 .entity-description {
@@ -174,7 +171,7 @@ hr{
 }
 
 .entity-description:hover {
-    color: #5E48FE;
+    color: #FFD60A;
 }
 
 .crud-actions {
@@ -187,7 +184,7 @@ hr{
     padding: 12px 25px;
     font-size: 1.3em;
     font-weight: 600;
-    border: 1.5px solid #4361ee;
+    border: 1.5px solid #FFC300;
     background: transparent;
     color: white;
     border-radius: 6px;
@@ -199,7 +196,8 @@ hr{
 }
 
 .btn-crud:hover {
-    background-color: #4361ee;
+    color: black;
+    background-color: #FFC300;
     transform: scale(1.05);
 }
 
@@ -212,10 +210,10 @@ hr{
 
 .crud-search input {
     padding: 12px;
-    width: 250px;
+    width: 150px;
     border-radius: 6px;
-    border: 1px solid #444;
-    background-color: #1e1e1e;
+    border: 1px solid #00183D;
+    background-color: #001029;
     color: white;
     font-size: 1em;
     transition: 0.3s ease-in-out;
@@ -223,22 +221,22 @@ hr{
 
 .crud-search input:focus {
     outline: none;
-    border: 0.5px solid #4361EE;
-    box-shadow: 0 0 3px #4361EE;
-    background-color: rgba(67, 97, 238, 0.1);
+    border: 0.5px solid #FFC300;
+    box-shadow: 0 0 3px #FFC300;
+    width: 250px;
 }
 
 .crud-search input:hover {
     outline: none;
-    border: 0.5px solid #4361EE;
-    box-shadow: 0 0 3px #4361EE;
+    border: 0.5px solid #FFC300;
+    box-shadow: 0 0 3px #FFC300;
 }
 
 .table-container {
     margin-top: 20px;
     overflow-x: auto;
     border-radius: 10px;
-    background-color: rgba(73, 73, 73, 0.15);
+    background-color: rgba(0, 20, 39, 0.6);
     padding: 15px;
 }
 
@@ -249,7 +247,8 @@ table {
 }
 
 thead {
-    background-color: rgba(94, 72, 254, 0.2);
+    background-color: rgb(0, 37, 71);
+    border-radius: 10px 10px 0 0;
 }
 
 th {
@@ -265,8 +264,9 @@ td {
 }
 
 tbody tr:hover {
-    background-color: rgba(94, 72, 254, 0.1);
+    background-color: rgba(255, 214, 10);
     transform: scale(1.01);
+    color: black;
 }
 
 td:hover{
