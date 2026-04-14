@@ -52,10 +52,14 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia cupiditate in accusamus cum autem consequuntur, ea animi odit! Ab illum est reprehenderit expedita sequi voluptatibus.
         </p>
         <div class="crud-actions">
-            <button class="btn-crud" id="btn-crear">Crear <i class="bi bi-plus-circle-fill"></i></button>
+            <button class="btn-crud" id="btn-crear" popovertarget="datos">Crear <i class="bi bi-plus-circle-fill"></i></button>
             <button class="btn-crud" id="btn-actualizar">Editar <i class="bi bi-pencil-fill"></i></button>
             <button class="btn-crud" id="btn-eliminar">Eliminar <i class="bi bi-trash-fill"></i></button>
             <button class="btn-crud" id="btn-listar">Actualizar Tabla <i class="bi bi-arrow-repeat"></i></button>
+        </div>
+
+        <div id="datos" popover>
+
         </div>
 
         <div class="crud-search">
@@ -76,13 +80,13 @@
                         <th>estado</th>
                     </tr>
                 </thead>
-                <tbody> 
-                    <tr>
-                        <td>1</td>
-                        <td>Juan</td>
-                        <td>Perez</td>
-                        <td>Zona 18</td>
-                        <td>1</td>
+                <tbody th:action="@{/listar}" method="get">
+                    <tr th:each="c : ${clientes}">
+                        <td th:text="${ c.dpi_cliente }"></td>
+                        <td th:text="${ c.nombre_cliente }"></td>
+                        <td th:text="${ c.apellido_cliente }"></td>
+                        <td th:text="${ c.direccion }"></td>
+                        <td th:text="${ c.estado }" ></td>
                     </tr>
                 </tbody>
             </table>
