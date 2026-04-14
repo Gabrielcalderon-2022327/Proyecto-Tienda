@@ -28,13 +28,23 @@ public class UsuariosServiceImplements implements UsuariosService{
     }
 
     @Override
-    public Usuarios addUsuario(Usuarios usuario) {
+    public Usuarios addUsuario(Usuarios usuario) { //Añadir comprobacion para verificar usuario con findByUsername
+        if (repository.findByUsername(usuario.getUsername()) != null){
+            return null;
+        }
         return repository.save(usuario);
     }
 
     @Override
-    public Usuarios updateUsuario(Usuarios usuario, Integer id) {
+    public Usuarios updateUsuario(Usuarios usuario, Integer id) { //Añadir comprobacion para verificar usuario con findByUsername
         Usuarios searchedUsuario = repository.findById(id).orElse(null);
+        if (repository.findByUsername(usuario.getUsername()) != null){
+            return null;
+        }
+        if (repository.findByEmail(usuario.getEmail()) != null){
+            return null;
+        }
+
         if (searchedUsuario == null){
             throw new ResourceNotFoundException("ID NO ENCONTRADO");
         } else {
@@ -54,5 +64,15 @@ public class UsuariosServiceImplements implements UsuariosService{
             throw new ResourceNotFoundException("ID NO ENCONTRADO");
         }
         repository.delete(searchedUsuario);
+    }
+
+    @Override
+    public Usuarios login(String usuario, String password) {
+        Usuarios user = repository.findByUsername(usuario);
+
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
+        }
+        return null;
     }
 }
