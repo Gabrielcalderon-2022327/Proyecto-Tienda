@@ -24,7 +24,7 @@ public class Productos {
 
     @Column(name = "stock")
     @NotNull(message = "El stock no puede esta vacío")
-    @Range(min = 1, message = "El stock debe ser mayor a 0")
+    @Range(min = 0, message = "El stock debe ser mayor o igual a 0")
     private Integer stock;
 
     @Column(name = "estado")
