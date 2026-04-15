@@ -22,7 +22,7 @@ public class DetalleVentaServiceImplements implements DetalleVentaService {
     public DetalleVenta getDetalleVentaById(Integer id) {
         DetalleVenta searchedDetalleVenta = repository.findById(id).orElse(null);
         if (searchedDetalleVenta == null){
-            throw new ResourceNotFoundException("ID NO ENCONTRADO");
+            return null;
         }
         return searchedDetalleVenta;
     }
@@ -36,7 +36,7 @@ public class DetalleVentaServiceImplements implements DetalleVentaService {
     public DetalleVenta updateDetalleVenta(DetalleVenta detalleVenta, Integer id) {
         DetalleVenta searchedDetalleVenta = repository.findById(id).orElse(null);
         if (searchedDetalleVenta == null){
-            throw new ResourceNotFoundException("ID NO ENCONTRADO");
+            return null;
         } else{
             searchedDetalleVenta.setCantidad(detalleVenta.getCantidad());
             searchedDetalleVenta.setPrecio_unitario(detalleVenta.getPrecio_unitario());
