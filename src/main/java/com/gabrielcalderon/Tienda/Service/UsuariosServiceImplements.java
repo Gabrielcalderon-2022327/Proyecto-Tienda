@@ -38,16 +38,10 @@ public class UsuariosServiceImplements implements UsuariosService{
     @Override
     public Usuarios updateUsuario(Usuarios usuario, Integer id) { //Añadir comprobacion para verificar usuario con findByUsername
         Usuarios searchedUsuario = repository.findById(id).orElse(null);
-        if (repository.findByUsername(usuario.getUsername()) != null){
-            return null;
-        }
-        if (repository.findByEmail(usuario.getEmail()) != null){
-            return null;
-        }
-
         if (searchedUsuario == null){
-            throw new ResourceNotFoundException("ID NO ENCONTRADO");
+            return null;
         } else {
+            searchedUsuario.setCodigo_usuario(usuario.getCodigo_usuario());
             searchedUsuario.setUsername(usuario.getUsername());
             searchedUsuario.setPassword(usuario.getPassword());
             searchedUsuario.setEmail(usuario.getEmail());
