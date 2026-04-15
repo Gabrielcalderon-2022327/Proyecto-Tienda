@@ -22,7 +22,7 @@ public class UsuariosServiceImplements implements UsuariosService{
     public Usuarios getUsuarioById(Integer id) {
         Usuarios searchedUsuario = repository.findById(id).orElse(null);
         if (searchedUsuario == null){
-            throw new ResourceNotFoundException("ID NO ENCONTRADO");
+            return null;
         }
         return searchedUsuario;
     }
