@@ -31,6 +31,7 @@ public class LoginController {
 
         if (user != null) {
             sesion.setAttribute("currentUser", usuario);
+            sesion.setAttribute("rol", user.getRol());
             return "redirect:/index";
         } else {
             model.addAttribute("error", "Credenciales incorrectas");
