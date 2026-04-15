@@ -32,9 +32,9 @@ public class ClientesController {
     }
 
     @GetMapping("/clientes/listar")
-    public String listarClientes(Model model){
+    public String listarClientes(RedirectAttributes redirectAttributes){
         List<Clientes> clientes = service.getAllClientes();
-        model.addAttribute("clientes", clientes);
+        redirectAttributes.addFlashAttribute("clientes", service.getAllClientes());
         return "redirect:/clientes";
     }
 
