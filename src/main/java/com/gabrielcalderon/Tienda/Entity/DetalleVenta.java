@@ -35,9 +35,6 @@ public class DetalleVenta {
     @NotNull(message = "El codigo de venta no puede esta vacío")
     private Integer ventas_codigo_venta;
 
-    @Column(name = "estado")
-    @NotNull(message = "El estado no puede esta vacío")
-    private Integer estado;
 
 
     public Integer getCodigo_detalle_venta() {
@@ -88,11 +85,4 @@ public class DetalleVenta {
         this.ventas_codigo_venta = ventas_codigo_venta;
     }
 
-    public Integer getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
 }
