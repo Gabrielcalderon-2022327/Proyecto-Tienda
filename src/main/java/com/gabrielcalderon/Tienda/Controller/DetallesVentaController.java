@@ -25,6 +25,7 @@ public class DetallesVentaController {
             return "redirect:/login";
         }
         model.addAttribute("username", session.getAttribute("currentUser"));
+        model.addAttribute("rol", session.getAttribute("rol"));
         if (!model.containsAttribute("detalles")) {
             model.addAttribute("detalles", service.getAllDetallesVenta());
         }
@@ -43,8 +44,7 @@ public class DetallesVentaController {
                                @RequestParam Double create_precio_unitario,
                                @RequestParam Double create_subtotal,
                                @RequestParam Integer create_productos_codigo_producto,
-                               @RequestParam Integer create_ventas_codigo_venta,
-                               @RequestParam Integer create_estado){
+                               @RequestParam Integer create_ventas_codigo_venta){
 
         DetalleVenta detalle = new DetalleVenta();
         detalle.setCantidad(create_cantidad);
@@ -52,7 +52,6 @@ public class DetallesVentaController {
         detalle.setSubtotal(create_subtotal);
         detalle.setProductos_codigo_producto(create_productos_codigo_producto);
         detalle.setVentas_codigo_venta(create_ventas_codigo_venta);
-        detalle.setEstado(create_estado);
 
         service.addDetalleVenta(detalle);
 
@@ -67,8 +66,7 @@ public class DetallesVentaController {
                                 @RequestParam Double edit_precio_unitario,
                                 @RequestParam Double edit_subtotal,
                                 @RequestParam Integer edit_productos_codigo_producto,
-                                @RequestParam Integer edit_ventas_codigo_venta,
-                                @RequestParam Integer edit_estado){
+                                @RequestParam Integer edit_ventas_codigo_venta){
 
         DetalleVenta detalle = new DetalleVenta();
         detalle.setCodigo_detalle_venta(edit_codigo_detalle_venta);
@@ -77,7 +75,6 @@ public class DetallesVentaController {
         detalle.setSubtotal(edit_subtotal);
         detalle.setProductos_codigo_producto(edit_productos_codigo_producto);
         detalle.setVentas_codigo_venta(edit_ventas_codigo_venta);
-        detalle.setEstado(edit_estado);
 
         service.updateDetalleVenta(detalle, edit_codigo_detalle_venta);
 

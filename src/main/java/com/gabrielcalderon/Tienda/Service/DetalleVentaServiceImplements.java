@@ -43,7 +43,6 @@ public class DetalleVentaServiceImplements implements DetalleVentaService {
             searchedDetalleVenta.setSubtotal(detalleVenta.getSubtotal());
             searchedDetalleVenta.setProductos_codigo_producto(detalleVenta.getProductos_codigo_producto());
             searchedDetalleVenta.setVentas_codigo_venta(detalleVenta.getVentas_codigo_venta());
-            searchedDetalleVenta.setEstado(detalleVenta.getEstado());
         }
         return repository.save(searchedDetalleVenta);
     }

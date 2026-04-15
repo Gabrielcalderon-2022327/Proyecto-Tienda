@@ -35,7 +35,8 @@
         <div class="header-icons">
             <p th:text="${username}">Nombre usuario</p>
             <button>
-                <i class="bi bi-person-circle" style="font-size: 40px"></i>
+                <i th:if="${rol == 'user'}" class="bi bi-person-circle" style="font-size: 50px"></i>
+                <img th:if="${rol == 'admin'}" src="/img/yo.png" alt="Admin" style="width: 50px; border-radius: 50%;">
             </button>
             <form th:action="@{/logout}" method="post">
                 <button id="logout-btn" type="submit">
@@ -96,14 +97,6 @@
                     <label>Venta:</label>
                     <input type="number" name="create_ventas_codigo_venta" required>
                 </div>
-                <div>
-                    <label for="estado">Estado:</label>
-                    <select name="create_estado" id="create_estado" required>
-                        <option value="1">Activo</option>
-                        <option value="0">Inactivo</option>
-                    </select>
-                </div>
-
 
             </div>
 
@@ -138,13 +131,6 @@
                     <label>Venta:</label>
                     <input type="number" id="edit_ventas_codigo_venta" name="edit_ventas_codigo_venta" required>
                 </div>
-                <div>
-                    <label for="estado">Estado:</label>
-                    <select name="edit_estado" id="edit_estado" required>
-                        <option value="1">Activo</option>
-                        <option value="0">Inactivo</option>
-                    </select>
-                </div>
             </div>
             <button type="submit" class="btn-crud">Editar</button>
         </form>
@@ -160,7 +146,6 @@
                     <th>subtotal</th>
                     <th>productos_codigo_producto</th>
                     <th>ventas_codigo_venta</th>
-                    <th>estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -173,7 +158,6 @@
                     <td th:text="${ d.subtotal }"></td>
                     <td th:text="${ d.productos_codigo_producto }"></td>
                     <td th:text="${ d.ventas_codigo_venta }"></td>
-                    <td th:text="${ d.estado }"></td>
                     <td>
                         <div class="table-actions">
                             <button  class="btn-editar" type="button" popovertarget="datosEditar"
@@ -183,7 +167,6 @@
                                 th:data-subtotal="${d.subtotal}"
                                 th:data-producto="${d.productos_codigo_producto}"
                                 th:data-venta="${d.ventas_codigo_venta}"
-                                th:data-estado="${d.estado}"
                                 onclick="cargarDatos(this)">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
@@ -210,7 +193,6 @@ function cargarDatos(button) {
     document.getElementById("edit_subtotal").value = button.dataset.subtotal;
     document.getElementById("edit_productos_codigo_producto").value = button.dataset.producto;
     document.getElementById("edit_ventas_codigo_venta").value = button.dataset.venta;
-    document.getElementById("edit_estado").value = button.dataset.estado;
 }
 </script>
 
