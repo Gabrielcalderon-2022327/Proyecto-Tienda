@@ -119,16 +119,16 @@ end $$
 delimiter ;
 
 -- --------------------------------------------------------------------------------------LLAMAR PROCEDIMIENTOS
-call sp_insert_productos('filtro de aceite',45.00,50,1);
-call sp_insert_productos('pastillas de freno',120.00,30,1);
-call sp_insert_productos('bujias',30.00,100,1);
-call sp_insert_productos('amortiguador',220.00,20,1);
-call sp_insert_productos('radiador',450.00,15,1);
-call sp_insert_productos('bateria 12v',380.00,25,1);
-call sp_insert_productos('correa de tiempo',95.00,40,1);
-call sp_insert_productos('disco de freno',160.00,35,1);
-call sp_insert_productos('alternador',520.00,10,1);
-call sp_insert_productos('filtro de aire',35.00,60,1);
+call sp_insert_productos('procesador intel i5',1200.00,25,1);
+call sp_insert_productos('memoria ram 16gb',450.00,40,1);
+call sp_insert_productos('disco ssd 1tb',600.00,30,1);
+call sp_insert_productos('tarjeta grafica rtx 3060',3200.00,10,1);
+call sp_insert_productos('placa madre b550',900.00,20,1);
+call sp_insert_productos('fuente de poder 650w',500.00,35,1);
+call sp_insert_productos('gabinete gamer',350.00,15,1);
+call sp_insert_productos('monitor 24 pulgadas',1100.00,18,1);
+call sp_insert_productos('teclado mecanico',250.00,50,1);
+call sp_insert_productos('mouse gamer',150.00,60,1);
 
 call sp_insert_usuarios('admin','123','admin@mail.com','admin',1);
 call sp_insert_usuarios('user1','123','user1@mail.com','user',1);
