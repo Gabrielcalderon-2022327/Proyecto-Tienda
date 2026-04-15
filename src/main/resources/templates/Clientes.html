@@ -171,6 +171,10 @@
     </main>
 
     <script>
+        window.addEventListener("scroll", function () {
+            const header = document.querySelector("header");
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        });
         function cargarDatos(button) {
             document.getElementById("edit_dpi_cliente").value = button.dataset.dpi;
             document.getElementById("edit_nombre_cliente").value = button.dataset.nombre;

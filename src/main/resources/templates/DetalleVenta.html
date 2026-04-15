@@ -186,14 +186,19 @@
 </main>
 
 <script>
-function cargarDatos(button) {
-    document.getElementById("edit_codigo_detalle_venta").value = button.dataset.codigo;
-    document.getElementById("edit_cantidad").value = button.dataset.cantidad;
-    document.getElementById("edit_precio_unitario").value = button.dataset.precio;
-    document.getElementById("edit_subtotal").value = button.dataset.subtotal;
-    document.getElementById("edit_productos_codigo_producto").value = button.dataset.producto;
-    document.getElementById("edit_ventas_codigo_venta").value = button.dataset.venta;
-}
+    window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    function cargarDatos(button) {
+        document.getElementById("edit_codigo_detalle_venta").value = button.dataset.codigo;
+        document.getElementById("edit_cantidad").value = button.dataset.cantidad;
+        document.getElementById("edit_precio_unitario").value = button.dataset.precio;
+        document.getElementById("edit_subtotal").value = button.dataset.subtotal;
+        document.getElementById("edit_productos_codigo_producto").value = button.dataset.producto;
+        document.getElementById("edit_ventas_codigo_venta").value = button.dataset.venta;
+    }
 </script>
 
 </body>

@@ -185,6 +185,10 @@
     </main>
     
     <script>
+        window.addEventListener("scroll", function () {
+            const header = document.querySelector("header");
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        });
         function cargarDatos(button) {
             document.getElementById("edit_codigo_venta").value = button.dataset.codigo_venta;
             document.getElementById("edit_fecha_venta").value = button.dataset.fecha_venta;

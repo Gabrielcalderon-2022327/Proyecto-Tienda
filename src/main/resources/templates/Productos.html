@@ -172,6 +172,10 @@
     </main>
     
     <script>
+        window.addEventListener("scroll", function () {
+            const header = document.querySelector("header");
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        });
         function cargarDatos(button) {
             document.getElementById("edit_codigo_producto").value = button.dataset.codigo;
             document.getElementById("edit_nombre_producto").value = button.dataset.nombre;

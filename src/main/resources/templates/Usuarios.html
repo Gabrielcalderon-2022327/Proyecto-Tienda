@@ -214,14 +214,18 @@
 </main>
 
 <script>
-function cargarDatos(button) {
-    document.getElementById("edit_codigo_usuario").value = button.dataset.id;
-    document.getElementById("edit_username").value = button.dataset.username;
-    document.getElementById("edit_password").value = button.dataset.password;
-    document.getElementById("edit_email").value = button.dataset.email;
-    document.getElementById("edit_rol").value = button.dataset.rol;
-    document.getElementById("edit_estado").value = button.dataset.estado;
-}
+    window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+    function cargarDatos(button) {
+        document.getElementById("edit_codigo_usuario").value = button.dataset.id;
+        document.getElementById("edit_username").value = button.dataset.username;
+        document.getElementById("edit_password").value = button.dataset.password;
+        document.getElementById("edit_email").value = button.dataset.email;
+        document.getElementById("edit_rol").value = button.dataset.rol;
+        document.getElementById("edit_estado").value = button.dataset.estado;
+    }
 </script>
 
 </body>
