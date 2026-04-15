@@ -35,7 +35,8 @@
             <div class="header-icons">
                 <p th:text="${username}">Nombre usuario</p>
                 <button>
-                    <i class="bi bi-person-circle" style="font-size: 40px"></i>
+                    <i th:if="${rol == 'user'}" class="bi bi-person-circle" style="font-size: 50px"></i>
+                    <img th:if="${rol == 'admin'}" src="/img/yo.png" alt="Admin" style="width: 50px; border-radius: 50%;">
                 </button>
                 <form th:action="@{/logout}" method="post">
                     <button id="logout-btn"  type="submit">

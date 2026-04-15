@@ -14,6 +14,7 @@ public class IndexController {
             return "redirect:/login";
         }
         model.addAttribute("username", session.getAttribute("currentUser"));
+        model.addAttribute("rol", session.getAttribute("rol"));
         return "index";
     }
 
