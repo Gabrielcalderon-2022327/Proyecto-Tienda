@@ -22,7 +22,7 @@ public class ClientesServiceImplements implements ClientesService{
     public Clientes getClienteById(Integer id) {
         Clientes searchedCliente = repository.findById(id).orElse(null);
         if (searchedCliente == null){
-            throw new ResourceNotFoundException("ID NO ENCONTRADO");
+            return null;
         }
         return searchedCliente;
     }
@@ -36,7 +36,7 @@ public class ClientesServiceImplements implements ClientesService{
     public Clientes updateCliente(Clientes cliente, Integer id) {
         Clientes searchedCliente = repository.findById(id).orElse(null);
         if (searchedCliente == null){
-            throw new ResourceNotFoundException("ID NO ENCONTRADO");
+            return null;
         } else{
             searchedCliente.setNombre_cliente(cliente.getNombre_cliente());
             searchedCliente.setApellido_cliente(cliente.getApellido_cliente());
