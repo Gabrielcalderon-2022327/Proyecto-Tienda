@@ -25,6 +25,7 @@ public class ClientesController {
             return "redirect:/login";
         }
         model.addAttribute("username", session.getAttribute("currentUser"));
+        model.addAttribute("rol", session.getAttribute("rol"));
         if (!model.containsAttribute("clientes")) {
             model.addAttribute("clientes", service.getAllClientes());
         }
