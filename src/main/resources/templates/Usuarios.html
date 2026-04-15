@@ -8,7 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
-    <link rel="stylesheet" href="../static/entityStyle.css">
+    <link rel="stylesheet" href="entityStyle.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
@@ -35,7 +35,8 @@
         <div class="header-icons">
             <p th:text="${username}">Nombre usuario</p>
             <button>
-                <i class="bi bi-person-circle" style="font-size: 40px"></i>
+                <i th:if="${rol == 'user'}" class="bi bi-person-circle" style="font-size: 50px"></i>
+                <img th:if="${rol == 'admin'}" src="/img/yo.png" alt="Admin" style="width: 50px; border-radius: 50%;">
             </button>
             <form th:action="@{/logout}" method="post">
                 <button id="logout-btn" type="submit">
@@ -92,7 +93,10 @@
 
                 <div>
                     <label>Rol:</label>
-                    <input type="text" name="create_rol" required>
+                    <select name="create_rol" required>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
                 </div>
 
                 <div>
@@ -136,7 +140,10 @@
 
                 <div>
                     <label>Rol:</label>
-                    <input type="text" id="edit_rol" name="edit_rol" required>
+                    <select name="edit_rol" required>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
                 </div>
 
                 <div>
