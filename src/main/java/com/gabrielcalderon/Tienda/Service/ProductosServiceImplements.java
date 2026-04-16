@@ -22,7 +22,7 @@ public class ProductosServiceImplements implements ProductosService{
     public Productos getProductoById(Integer id) {
         Productos searchedProducto = repository.findById(id).orElse(null);
         if (searchedProducto == null){
-            return null;
+            throw new ResourceNotFoundException("Producto no encontrado");
         }
         return searchedProducto;
     }
@@ -36,7 +36,7 @@ public class ProductosServiceImplements implements ProductosService{
     public Productos updateProducto(Productos producto, Integer id) {
         Productos searchedProducto = repository.findById(id).orElse(null);
         if (searchedProducto == null){
-            return null;
+            throw new ResourceNotFoundException("Producto no encontrado");
         } else {
             searchedProducto.setNombre_producto(producto.getNombre_producto());
             searchedProducto.setPrecio(producto.getPrecio());
@@ -50,7 +50,7 @@ public class ProductosServiceImplements implements ProductosService{
     public void deleteProducto(Integer id) {
         Productos searchedProducto = repository.findById(id).orElse(null);
         if (searchedProducto == null){
-            return;
+            throw new ResourceNotFoundException("Producto no encontrado");
         }
         repository.delete(searchedProducto);
     }

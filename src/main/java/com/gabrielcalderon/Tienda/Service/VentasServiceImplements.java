@@ -22,7 +22,7 @@ public class VentasServiceImplements implements VentasService{
     public Ventas getVentaById(Integer id) {
         Ventas searchedVenta =  repository.findById(id).orElse(null);
         if (searchedVenta == null){
-            return null;
+            throw new ResourceNotFoundException("Venta no encontrada");
         }
         return searchedVenta;
     }
@@ -36,7 +36,7 @@ public class VentasServiceImplements implements VentasService{
     public Ventas updateVenta(Ventas venta, Integer id) {
         Ventas searchedVenta =  repository.findById(id).orElse(null);
         if (searchedVenta == null){
-            return null;
+            throw new ResourceNotFoundException("Venta no encontrada");
         } else{
             searchedVenta.setFecha_venta(venta.getFecha_venta());
             searchedVenta.setTotal(venta.getTotal());
@@ -51,7 +51,7 @@ public class VentasServiceImplements implements VentasService{
     public void deleteVenta(Integer id) {
         Ventas searchedVenta =  repository.findById(id).orElse(null);
         if (searchedVenta == null){
-            return;
+            throw new ResourceNotFoundException("Venta no encontrada");
         }
         repository.delete(searchedVenta);
     }

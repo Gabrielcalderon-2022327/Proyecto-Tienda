@@ -22,7 +22,7 @@ public class UsuariosServiceImplements implements UsuariosService{
     public Usuarios getUsuarioById(Integer id) {
         Usuarios searchedUsuario = repository.findById(id).orElse(null);
         if (searchedUsuario == null){
-            return null;
+            throw new ResourceNotFoundException("Usuario no encontrado");
         }
         return searchedUsuario;
     }
@@ -30,7 +30,7 @@ public class UsuariosServiceImplements implements UsuariosService{
     @Override
     public Usuarios addUsuario(Usuarios usuario) { //Añadir comprobacion para verificar usuario con findByUsername
         if (repository.findByUsername(usuario.getUsername()) != null){
-            return null;
+            throw new IllegalArgumentException("Usuario ya existe");
         }
         return repository.save(usuario);
     }
@@ -39,7 +39,7 @@ public class UsuariosServiceImplements implements UsuariosService{
     public Usuarios updateUsuario(Usuarios usuario, Integer id) { //Añadir comprobacion para verificar usuario con findByUsername
         Usuarios searchedUsuario = repository.findById(id).orElse(null);
         if (searchedUsuario == null){
-            return null;
+            throw new ResourceNotFoundException("Usuario no encontrado");
         } else {
             searchedUsuario.setCodigo_usuario(usuario.getCodigo_usuario());
             searchedUsuario.setUsername(usuario.getUsername());
@@ -55,7 +55,7 @@ public class UsuariosServiceImplements implements UsuariosService{
     public void deleteUsuario(Integer id) {
         Usuarios searchedUsuario = repository.findById(id).orElse(null);
         if (searchedUsuario == null){
-            throw new ResourceNotFoundException("ID NO ENCONTRADO");
+            throw new ResourceNotFoundException("Usuario no encontrado");
         }
         repository.delete(searchedUsuario);
     }

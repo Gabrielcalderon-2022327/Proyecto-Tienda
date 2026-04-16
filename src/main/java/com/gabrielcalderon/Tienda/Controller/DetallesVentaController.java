@@ -92,14 +92,7 @@ public class DetallesVentaController {
     @PostMapping("/detalles/buscar")
     public String buscarDetalle(RedirectAttributes redirectAttributes,
                                 @RequestParam Integer searched_id){
-
         DetalleVenta detalle = service.getDetalleVentaById(searched_id);
-
-        if(detalle == null){
-            redirectAttributes.addFlashAttribute("error", "El detalle de venta no existe");
-            return "redirect:/detalles";
-        }
-
         redirectAttributes.addFlashAttribute("detalles", List.of(detalle));
         redirectAttributes.addFlashAttribute("exito", "Se encontró el detalle de venta");
 

@@ -82,10 +82,6 @@ public class VentasController {
     @PostMapping("/ventas/buscar")
     public String buscarVentas(RedirectAttributes redirectAttributes, @RequestParam Integer searched_id){
         Ventas ventas = service.getVentaById(searched_id);
-        if(ventas == null){
-            redirectAttributes.addFlashAttribute("error", "La venta no existe");
-            return "redirect:/ventas";
-        }
         redirectAttributes.addFlashAttribute("ventas", List.of(ventas));
         redirectAttributes.addFlashAttribute("exito", "Se encontro la venta");
         return "redirect:/ventas";

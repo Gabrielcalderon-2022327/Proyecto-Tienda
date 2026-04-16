@@ -94,14 +94,7 @@ public class UsuariosController {
     @PostMapping("/usuarios/buscar")
     public String buscarUsuario(RedirectAttributes redirectAttributes,
                                 @RequestParam Integer searched_id){
-
         Usuarios usuario = service.getUsuarioById(searched_id);
-
-        if(usuario == null){
-            redirectAttributes.addFlashAttribute("error", "El usuario no existe");
-            return "redirect:/usuarios";
-        }
-
         redirectAttributes.addFlashAttribute("usuarios", List.of(usuario));
         redirectAttributes.addFlashAttribute("exito", "Se encontró el usuario");
 

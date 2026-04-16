@@ -57,12 +57,7 @@ public class LoginController {
         newUser.setEmail(mail);
         newUser.setRol("user");
         newUser.setEstado(1);
-
-        Usuarios user = service.addUsuario(newUser);
-        if (user==null){
-            model.addAttribute("error", "El nombre de usuario o el email ya existen");
-            return "Register";
-        }
+        service.addUsuario(newUser);
         return "redirect:/login";
     }
 

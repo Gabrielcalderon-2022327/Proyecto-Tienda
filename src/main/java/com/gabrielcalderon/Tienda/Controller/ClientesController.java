@@ -82,10 +82,6 @@ public class ClientesController {
     @PostMapping("/clientes/buscar")
     public String buscarClientes(RedirectAttributes redirectAttributes, @RequestParam Integer searched_id){
         Clientes cliente = service.getClienteById(searched_id);
-        if(cliente == null){
-            redirectAttributes.addFlashAttribute("error", "El cliente no existe");
-            return "redirect:/clientes";
-        }
         redirectAttributes.addFlashAttribute("clientes", List.of(cliente));
         redirectAttributes.addFlashAttribute("exito", "Se encontro el cliente");
         return "redirect:/clientes";

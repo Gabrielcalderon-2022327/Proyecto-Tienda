@@ -77,10 +77,6 @@ public class ProductosController {
     @PostMapping("/productos/buscar")
     public String buscarProductos(RedirectAttributes redirectAttributes, @RequestParam Integer searched_id){
         Productos producto = service.getProductoById(searched_id);
-        if(producto == null){
-            redirectAttributes.addFlashAttribute("error", "El producto no existe");
-            return "redirect:/productos";
-        }
         redirectAttributes.addFlashAttribute("productos", List.of(producto));
         redirectAttributes.addFlashAttribute("exito", "Se encontró el producto");
         return "redirect:/productos";
