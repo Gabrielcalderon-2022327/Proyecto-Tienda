@@ -35,7 +35,6 @@ public class LoginController {
             return "redirect:/index";
         } else {
             model.addAttribute("error", "Credenciales incorrectas");
-            System.out.println("hola");
             return "Login";
         }
     }
