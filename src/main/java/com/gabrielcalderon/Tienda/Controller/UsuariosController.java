@@ -24,6 +24,9 @@ public class UsuariosController {
         if(session.getAttribute("currentUser") == null){
             return "redirect:/login";
         }
+        if (session.getAttribute("rol") != "admin"){
+            return "redirect:/index";
+        }
 
         model.addAttribute("username", session.getAttribute("currentUser"));
         model.addAttribute("rol", session.getAttribute("rol"));
