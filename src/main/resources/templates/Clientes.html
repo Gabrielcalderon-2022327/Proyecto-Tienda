@@ -28,7 +28,7 @@
             <div class="navegation-container">
                 <a th:href="@{/detalles}" class="nav-btn">Detalles Venta</a>
                 <a th:href="@{/productos}" class="nav-btn">Productos</a>
-                <a th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
+                <a th:if="${rol == 'admin'}" th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
                 <a th:href="@{/ventas}" class="nav-btn">Ventas</a>
             </div>
             <div class="header-icons">
@@ -54,7 +54,7 @@
         </p>
 
         <div class="crud-actions">
-            <button class="btn-crud" id="btn-crear" popovertarget="datosCrear">Crear <i class="bi bi-plus-circle-fill"></i></button>
+            <button th:if="${rol == 'admin'}" class="btn-crud" id="btn-crear" popovertarget="datosCrear">Crear <i class="bi bi-plus-circle-fill"></i></button>
             <a th:href="@{/clientes/listar}"><button class="btn-crud" id="btn-listar">Actualizar Tabla <i class="bi bi-arrow-repeat"></i></button></a>
             <form class="crud-search" th:action="@{/clientes/buscar}" method="post">
                 <input type="number" id="searched_id" name="searched_id" placeholder="Buscar por DPI Cliente" required>
@@ -141,7 +141,7 @@
                         <th>apellido_cliente</th>
                         <th>direccion</th>
                         <th>estado</th>
-                        <th>Acciones</th>
+                        <th th:if="${rol == 'admin'}" >Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -151,7 +151,7 @@
                         <td th:text="${ c.apellido_cliente }"></td>
                         <td th:text="${ c.direccion }"></td>
                         <td th:text="${ c.estado }" ></td>
-                        <td>
+                        <td th:if="${rol == 'admin'}">
                             <div class="table-actions">
                                 <button  type="button" class="btn-editar" popovertarget="datosEditar"
                                     th:data-dpi="${c.dpi_cliente}"

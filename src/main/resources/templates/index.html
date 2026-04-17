@@ -29,7 +29,7 @@
                 <a th:href="@{/clientes}" class="nav-btn">Clientes</a>
                 <a th:href="@{/detalles}" class="nav-btn">Detalles Venta</a>
                 <a th:href="@{/productos}" class="nav-btn">Productos</a>
-                <a th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
+                <a th:if="${rol == 'admin'}" th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
                 <a th:href="@{/ventas}" class="nav-btn">Ventas</a>
             </div>
             <div class="header-icons">
@@ -74,7 +74,7 @@
                 <h2>Productos</h2>
             </a>
 
-            <a th:href="@{/usuarios}" class="entity-container">
+            <a th:if="${rol == 'admin'}" th:href="@{/usuarios}" class="entity-container">
                 <i class="bi bi-person-vcard-fill"></i>
                 <h2>Usuarios</h2>
             </a>

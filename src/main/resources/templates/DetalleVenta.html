@@ -28,7 +28,7 @@
         <div class="navegation-container">
             <a th:href="@{/clientes}" class="nav-btn">Clientes</a>
             <a th:href="@{/productos}" class="nav-btn">Productos</a>
-            <a th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
+            <a th:if="${rol == 'admin'}" th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
             <a th:href="@{/ventas}" class="nav-btn">Ventas</a>
         </div>
 
@@ -171,7 +171,7 @@
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
 
-                            <a th:href="@{/detalles/eliminar/{id}(id=${d.codigo_detalle_venta})}">
+                            <a th:if="${rol == 'admin'}" th:href="@{/detalles/eliminar/{id}(id=${d.codigo_detalle_venta})}">
                                 <button type="button" class="btn-eliminar">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>

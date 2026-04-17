@@ -29,7 +29,7 @@
                 <a th:href="@{/detalles}" class="nav-btn">Detalles Venta</a>
                 <a th:href="@{/productos}" class="nav-btn">Productos</a>
                 <a th:href="@{/clientes}" class="nav-btn">Clientes</a>
-                <a th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
+                <a th:if="${rol == 'admin'}" th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
             </div>
             <div class="header-icons">
                 <p th:text="${username}">Nombre usuario</p>
@@ -175,7 +175,7 @@
                                     th:data-usuarios_codigo_usuario="${v.usuarios_codigo_usuario}"
                                     onclick="cargarDatos(this)"><i class="bi bi-pencil-fill"></i>
                                 </button>
-                                <a th:href="@{/ventas/eliminar/{id}(id=${v.codigo_venta})}"><button type="button" class="btn-eliminar"><i class="bi bi-trash-fill"></i></button></a>
+                                <a th:if="${rol == 'admin'}" th:href="@{/ventas/eliminar/{id}(id=${v.codigo_venta})}"><button type="button" class="btn-eliminar"><i class="bi bi-trash-fill"></i></button></a>
                             </div>
                         </td>
                     </tr>
