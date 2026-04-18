@@ -80,7 +80,7 @@ Esto permite simular un entorno real de gestión de ventas.
 
 1. Clonar el repositorio:
 
-```bash
+```
 git clone https://github.com/Gabrielcalderon-2022327/Proyecto-Tienda.git
 ```
 
