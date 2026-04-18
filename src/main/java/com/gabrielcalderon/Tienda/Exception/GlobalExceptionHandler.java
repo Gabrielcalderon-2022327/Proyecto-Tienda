@@ -1,6 +1,7 @@
 package com.gabrielcalderon.Tienda.Exception;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,9 +12,9 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public String validarAnotacionesEntidad(MethodArgumentNotValidException ex, RedirectAttributes redirectAttributes, HttpServletRequest request) {
-        String mensaje = ex.getBindingResult().getFieldErrors().stream().map(err -> err.getDefaultMessage()).reduce((a, b) -> a + " | " + b).orElse("Error de validación");
+    @ExceptionHandler(ConstraintViolationException.class)
+    public String validarAnotacionesEntidad(ConstraintViolationException ex, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        String mensaje = ex.getConstraintViolations().stream().map(err -> err.getMessage()).reduce((a, b) -> a + " | " + b).orElse("Error de validación");
         redirectAttributes.addFlashAttribute("error", mensaje);
         return "redirect:" + getReferer(request);
     }
