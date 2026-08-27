@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="loginStyle.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>INICIAR SESION</h2>
+        <div class="input-group">
+            <form th:action="@{/login}" method="post">
+                <input type="text" name="usuario" placeholder="Usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">INGRESAR</button>
+            </form>
+        </div>
+        <p>No tienes cuenta? <a th:href="@{/register}">Registrate</a></p>
+        <h3 th:text="${error}" class="error-message" th:if="${error != null}"></h3>
+    </div>
+</body>
+
+</html>

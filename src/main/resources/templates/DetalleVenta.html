@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Venta</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="entityStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+<header>
+    <div class="header-container">
+        <a th:href="@{/index}">
+            <div class="logo-container">
+                <i class="bi bi-shop" style="font-size: 100px;"></i>
+                <div class="name-container">
+                    <h1>SISTEMA DE GESTIÓN</h1>
+                    <h1>DE VENTAS</h1>
+                </div>
+            </div>
+        </a>
+
+        <div class="navegation-container">
+            <a th:href="@{/clientes}" class="nav-btn">Clientes</a>
+            <a th:href="@{/productos}" class="nav-btn">Productos</a>
+            <a th:if="${rol == 'admin'}" th:href="@{/usuarios}" class="nav-btn">Usuarios</a>
+            <a th:href="@{/ventas}" class="nav-btn">Ventas</a>
+        </div>
+
+        <div class="header-icons">
+            <p th:text="${username}">Nombre usuario</p>
+            <button>
+                <i th:if="${rol == 'user'}" class="bi bi-person-circle" style="font-size: 50px"></i>
+                <img th:if="${rol == 'admin'}" src="/img/yo.png" alt="Admin" style="width: 50px; border-radius: 50%;">
+            </button>
+            <form th:action="@{/logout}" method="post">
+                <button id="logout-btn" type="submit">
+                    Cerrar Sesion <i class="bi bi-box-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<main class="main-content">
+    <h1 class="entity-title">DETALLES DE VENTA:</h1>
+    <hr>
+
+    <p class="entity-description">
+        Gestión de los detalles de venta del sistema: Aquí puedes crear, editar, eliminar y buscar detalles de venta por su ID. Asegúrate de ingresar datos válidos para mantener la integridad de la información..
+    </p>
+
+    <div class="crud-actions">
+        <button class="btn-crud" popovertarget="datosCrear">Crear <i class="bi bi-plus-circle-fill"></i></button>
+        <a th:href="@{/detalles/listar}">
+            <button class="btn-crud">Actualizar Tabla <i class="bi bi-arrow-repeat"></i></button>
+        </a>
+
+        <form class="crud-search" th:action="@{/detalles/buscar}" method="post">
+            <input type="number" name="searched_id" placeholder="Buscar por Codigo de Detalle de Venta" required>
+            <button type="submit" class="btn-crud">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+
+        <div class="messages-container">
+            <h3 th:text="${error}" class="error-message" th:if="${error != null}"></h3>
+            <h3 th:text="${exito}" class="exito-message" th:if="${exito != null}"></h3>
+        </div>
+    </div>
+
+    <div id="datosCrear" class="popUp-container" popover>
+        <form th:action="@{/detalles/crear}" method="post" class="crud-form">
+            <div class="input-group">
+                <div>
+                    <label>Cantidad:</label>
+                    <input type="number" name="create_cantidad" required>
+                </div>
+                <div>
+                    <label>Precio Unitario:</label>
+                    <input type="number" step="any" name="create_precio_unitario" required>
+                </div>
+                <div>
+                    <label>Subtotal:</label>
+                    <input type="number" step="any" name="create_subtotal" required>
+                </div>
+                <div>
+                    <label>Producto:</label>
+                    <input type="number" name="create_productos_codigo_producto" required>
+                </div>
+                <div>
+                    <label>Venta:</label>
+                    <input type="number" name="create_ventas_codigo_venta" required>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn-crud">Crear</button>
+        </form>
+    </div>
+
+    <div id="datosEditar" class="popUp-container" popover>
+        <form th:action="@{/detalles/editar}" method="post" class="crud-form">
+            <div class="input-group">
+                <div>
+                    <label>ID:</label>
+                    <input type="number" id="edit_codigo_detalle_venta" name="edit_codigo_detalle_venta" readonly required>
+                </div>
+                <div>
+                    <label>Cantidad:</label>
+                    <input type="number" id="edit_cantidad" name="edit_cantidad" required>
+                </div>
+                <div>
+                    <label>Precio Unitario:</label>
+                    <input type="number" step="any" id="edit_precio_unitario" name="edit_precio_unitario" required>
+                </div>
+                <div>
+                    <label>Subtotal:</label>
+                    <input type="number" step="any" id="edit_subtotal" name="edit_subtotal" required>
+                </div>
+                <div>
+                    <label>Producto:</label>
+                    <input type="number" id="edit_productos_codigo_producto" name="edit_productos_codigo_producto" required>
+                </div>
+                <div>
+                    <label>Venta:</label>
+                    <input type="number" id="edit_ventas_codigo_venta" name="edit_ventas_codigo_venta" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-crud">Editar</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>codigo_detalle_venta</th>
+                    <th>cantidad</th>
+                    <th>precio_unitario</th>
+                    <th>subtotal</th>
+                    <th>productos_codigo_producto</th>
+                    <th>ventas_codigo_venta</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="d : ${detalles}">
+                    <td th:text="${ d.codigo_detalle_venta }"></td>
+                    <td th:text="${ d.cantidad }"></td>
+                    <td th:text="${ d.precio_unitario }"></td>
+                    <td th:text="${ d.subtotal }"></td>
+                    <td th:text="${ d.productos_codigo_producto }"></td>
+                    <td th:text="${ d.ventas_codigo_venta }"></td>
+                    <td>
+                        <div class="table-actions">
+                            <button  class="btn-editar" type="button" popovertarget="datosEditar"
+                                th:data-codigo="${d.codigo_detalle_venta}"
+                                th:data-cantidad="${d.cantidad}"
+                                th:data-precio="${d.precio_unitario}"
+                                th:data-subtotal="${d.subtotal}"
+                                th:data-producto="${d.productos_codigo_producto}"
+                                th:data-venta="${d.ventas_codigo_venta}"
+                                onclick="cargarDatos(this)">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+
+                            <a th:if="${rol == 'admin'}" th:href="@{/detalles/eliminar/{id}(id=${d.codigo_detalle_venta})}">
+                                <button type="button" class="btn-eliminar">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+<script>
+    window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    function cargarDatos(button) {
+        document.getElementById("edit_codigo_detalle_venta").value = button.dataset.codigo;
+        document.getElementById("edit_cantidad").value = button.dataset.cantidad;
+        document.getElementById("edit_precio_unitario").value = button.dataset.precio;
+        document.getElementById("edit_subtotal").value = button.dataset.subtotal;
+        document.getElementById("edit_productos_codigo_producto").value = button.dataset.producto;
+        document.getElementById("edit_ventas_codigo_venta").value = button.dataset.venta;
+    }
+</script>
+
+</body>
+</html>
